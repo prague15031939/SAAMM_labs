@@ -1,4 +1,4 @@
-from BaseDistributor import BaseDistributor
+from .BaseDistributor import BaseDistributor
 from math import floor, log
 from random import randint
 from numpy import prod

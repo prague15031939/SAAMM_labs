@@ -33,7 +33,7 @@ def main():
         
         sequence = distributors[variant - 1].InputParameters().GetDistribution(sequence)
 
-        frequencies = generator.GetFrequencies(sequence, 20)
+        frequencies = generator.GetFrequencies(sequence, intervalAmount)[:intervalAmount]
 
         plt.bar([x + 1 / intervalAmount for x in np.arange(0, 1, 1 / intervalAmount)], frequencies, width = 1 / intervalAmount, edgecolor="black")
         plt.show()

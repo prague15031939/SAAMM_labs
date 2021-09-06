@@ -1,4 +1,4 @@
-from BaseDistributor import BaseDistributor
+from .BaseDistributor import BaseDistributor
 from random import randint
 
 class SimpsonDistributor(BaseDistributor):

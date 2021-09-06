@@ -1,4 +1,4 @@
-from BaseDistributor import BaseDistributor
+from .BaseDistributor import BaseDistributor
 from math import log
 
 class ExponentialDistributor(BaseDistributor):
