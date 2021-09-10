@@ -26,5 +26,9 @@ class Lehmer(BaseDistributor):
         self.x = self.a * self.x % self.m
         return self.x / self.m
 
+    def GetSequenceOf(self, count):
+        self.x = self.R
+        return [self.GetNext() for i in range(count)] 
+
 
 

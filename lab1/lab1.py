@@ -13,19 +13,19 @@ def main():
         multiplier = 84589
         modulus = 217728
     elif int(variant) == 1:
-        startValue = 20823
-        multiplier = 4095
-        modulus = 2147483647
+        startValue = 995053
+        multiplier = 550000
+        modulus = 1000002
     else:
         startValue = int(input("R0: "))
         multiplier = int(input("a: "))
         modulus = int(input("m: "))
 
     generator = Lehmer(multiplier, startValue, modulus)
-    sequence = generator.GetSequence()
+    sequence = generator.GetSequenceOf(5 * (10 ** 5))
     unsortedSequence = sequence.copy()
-    frequencies = generator.GetFrequencies(sequence, 20)
-
+    frequencies = generator.GetFrequencies(sequence, 20)[:20]
+    
     plt.bar([x + 1 / intervalAmount for x in np.arange(0, 1, 1 / intervalAmount)], frequencies, width = 1 / intervalAmount, edgecolor="black")
     plt.show()
 

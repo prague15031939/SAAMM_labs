@@ -13,16 +13,16 @@ from Distributors.UniformDistributor import UniformDistributor
 intervalAmount = 20
 
 def main():
-    startValue = 44293
-    multiplier = 84589
-    modulus = 217728
+    startValue = 995053
+    multiplier = 550000
+    modulus = 1000002
 
     print(f"\nLehmer generator parameters: R0 = {startValue}, a = {multiplier}, m = {modulus}")
 
     while True:
 
         generator = Lehmer(multiplier, startValue, modulus)
-        sequence = generator.GetSequence()
+        sequence = generator.GetSequenceOf(5 * (10 ** 5))
 
         distributors = [UniformDistributor(), GaussDistributor(), ExponentialDistributor(), GammaDistributor(), TriangleDistributor(), SimpsonDistributor()]
 

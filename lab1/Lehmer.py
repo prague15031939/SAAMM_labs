@@ -6,7 +6,7 @@ class Lehmer:
         self.m = modulus
 
         self.x = None
-        self.__precision = 0.0001
+        self.__precision = 0.000001
         self.periodValue = None
 
     def GetSequence(self):
@@ -48,7 +48,7 @@ class Lehmer:
         return frequencies
 
     def GetPeriod(self):
-        testSequence = self.GetSequenceOf(10 ** 5)
+        testSequence = self.GetSequenceOf(5 * (10 ** 5))
         v = testSequence[-1]
         hits = [i for i, item in enumerate(testSequence) if abs(item - v) < self.__precision]
         return hits[1] - hits[0], hits[1]
