@@ -19,7 +19,7 @@ class BaseDistributor:
             intervalBegin += intervalLength
             frequencies.append(hitNumber / sequenceLength)
         
-        return frequencies
+        return frequencies, xMin, xMax
 
     def GetDistribution(self, sequence): 
         return sequence

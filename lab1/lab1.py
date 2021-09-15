@@ -24,9 +24,9 @@ def main():
     generator = Lehmer(multiplier, startValue, modulus)
     sequence = generator.GetSequenceOf(5 * (10 ** 5))
     unsortedSequence = sequence.copy()
-    frequencies = generator.GetFrequencies(sequence, 20)[:20]
+    frequencies = generator.GetFrequencies(sequence, intervalAmount)[:intervalAmount]
     
-    plt.bar([x + 1 / intervalAmount for x in np.arange(0, 1, 1 / intervalAmount)], frequencies, width = 1 / intervalAmount, edgecolor="black")
+    plt.bar([x + 1 / intervalAmount for x in np.arange(0, 1, 1 / intervalAmount)][:intervalAmount], frequencies, width = 1 / intervalAmount, edgecolor="black")
     plt.show()
 
     statistics = Statistics()

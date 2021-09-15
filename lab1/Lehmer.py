@@ -51,5 +51,5 @@ class Lehmer:
         testSequence = self.GetSequenceOf(5 * (10 ** 5))
         v = testSequence[-1]
         hits = [i for i, item in enumerate(testSequence) if abs(item - v) < self.__precision]
-        return hits[1] - hits[0], hits[1]
+        return hits[1] - hits[0], hits[1] - hits[0]
 

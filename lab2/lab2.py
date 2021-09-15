@@ -33,9 +33,11 @@ def main():
         
         sequence = distributors[variant - 1].InputParameters().GetDistribution(sequence)
 
-        frequencies = generator.GetFrequencies(sequence, intervalAmount)[:intervalAmount]
+        frequencies, xMin, xMax = generator.GetFrequencies(sequence, intervalAmount)
 
-        plt.bar([x + 1 / intervalAmount for x in np.arange(0, 1, 1 / intervalAmount)], frequencies, width = 1 / intervalAmount, edgecolor="black")
+        delta = (xMax - xMin) / intervalAmount
+
+        plt.bar([x + delta for x in np.arange(xMin, xMax, delta).tolist()][:intervalAmount], frequencies[:intervalAmount], width = delta, edgecolor="black")
         plt.show()
 
         statistics = Statistics()

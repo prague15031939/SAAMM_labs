@@ -17,6 +17,6 @@ class GammaDistributor(BaseDistributor):
     def GetDistribution(self, sequence):
         result = []
         for item in sequence:
-            R = prod([sequence[randint(0, len(sequence) - 1)] for i in range(floor(self.eta) + 1)])
-            result.append(-abs(log(R) / self.lmbd))
+            R = prod([sequence[randint(0, len(sequence) - 1)] for i in range(floor(self.eta))])
+            result.append(-log(R) / self.lmbd)
         return result
