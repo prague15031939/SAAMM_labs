@@ -1,6 +1,5 @@
 from StateMachine import StateMachine
 from Lehmer import Lehmer
-import numpy as np
 
 startValue = 995053
 multiplier = 550000
@@ -32,19 +31,16 @@ def main():
     print(f"P211: {stateMachine.P211 / N}")
     print(f"P210: {stateMachine.P210 / N}")
 
-    print(f"sum: {stateMachine.P000 / N + stateMachine.P010 / N + stateMachine.P001 / N + stateMachine.P110 / N + stateMachine.P011 / N + stateMachine.P111 / N + stateMachine.P210 / N + stateMachine.P211 / N}")
-
-    #print(f"Вероятность отказа (Potk): {Potk}")
-    #print(f"Вероятность блокировки (Pbl): {Pbl}")
-    #print(f"Средняя длина очереди (Loch): {Loch}")
-    #print(f"Среднее число заявок, находящихся в системе (Lc): {Lc}")
-    #print(f"Относительная пропускная способность (Q): {Q}")
-    #print(f"Абсолютная пропускная способность (A): {A}")
-    #print(f"Среднее время пребывания заявки в очереди (Woch): {Woch}")
-    #print(f"Среднее время пребывания заявки в системе (Wc): {Wc}")
-    #print(f"Коэффициент загрузки канала (K1): {K1}")
-    #print(f"Коэффициент загрузки канала (K2): {K2}")
-
+    print(f"Вероятность отказа (Potk): {stateMachine.dcl / stateMachine.ga}")
+    print(f"Вероятность блокировки (Pbl): {0}")
+    print(f"Средняя длина очереди (Loch): {stateMachine.Loch / N}")
+    print(f"Среднее число заявок, находящихся в системе (Lc): {stateMachine.Lc / N }")
+    print(f"Относительная пропускная способность (Q): {stateMachine.A / stateMachine.ga}")
+    print(f"Абсолютная пропускная способность (A): {stateMachine.A / N}")
+    print(f"Среднее время пребывания заявки в очереди (Woch): {stateMachine.Loch / stateMachine.en}")
+    print(f"Среднее время пребывания заявки в системе (Wc): {stateMachine.Lc / stateMachine.ga}") #
+    print(f"Коэффициент загрузки канала (K1): {stateMachine.K1 / N}")
+    print(f"Коэффициент загрузки канала (K2): {stateMachine.K2 / N}")
 
 if __name__ == "__main__":
     main()
