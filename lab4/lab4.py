@@ -21,7 +21,7 @@ def main():
         po = generator.GetNext()
         p1 = generator.GetNext()
         p2 = generator.GetNext()
-        stateMachine.SwitchState(po, p1, p2)
+        stateMachine.SwitchState(po <= stateMachine.po, p1 <= stateMachine.p1, p2 <= stateMachine.p2)
 
     print(f"P000: {stateMachine.P000 / N}")
     print(f"P010: {stateMachine.P010 / N}")
