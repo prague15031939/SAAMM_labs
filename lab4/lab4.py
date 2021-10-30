@@ -9,12 +9,17 @@ N = 1000000
 T = 2
 
 def main():
-    #po = float(input("po: "))
-    #p1 = float(input("p1: "))
-    #p2 = float(input("p2: "))
+    try:
+        po = float(input("po: "))
+        p1 = float(input("p1: "))
+        p2 = float(input("p2: "))
+    except:
+        po = 0.5
+        p1 = 0.4 
+        p2 = 0.4
 
     generator = Lehmer(multiplier, startValue, modulus)
-    stateMachine = StateMachine(startState)
+    stateMachine = StateMachine(startState, po, p1, p2)
 
     for i in range(N):
         po = generator.GetNext()
@@ -38,7 +43,7 @@ def main():
     print(f"Относительная пропускная способность (Q): {stateMachine.A / stateMachine.ga}")
     print(f"Абсолютная пропускная способность (A): {stateMachine.A / N}")
     print(f"Среднее время пребывания заявки в очереди (Woch): {stateMachine.Loch / stateMachine.en}")
-    print(f"Среднее время пребывания заявки в системе (Wc): {stateMachine.Lc / stateMachine.ga}") #
+    print(f"Среднее время пребывания заявки в системе (Wc): {stateMachine.Lc / stateMachine.en}") 
     print(f"Коэффициент загрузки канала (K1): {stateMachine.K1 / N}")
     print(f"Коэффициент загрузки канала (K2): {stateMachine.K2 / N}")
 

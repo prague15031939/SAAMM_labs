@@ -1,6 +1,6 @@
 class StateMachine:
 
-    def __init__(self, startState, po=0.5, p1=0.6, p2=0.6):
+    def __init__(self, startState, po, p1, p2):
         self.state = startState
         self.po = po
         self.p1 = p1
