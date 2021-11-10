@@ -27,6 +27,11 @@ def main():
         p2 = generator.GetNext()
         stateMachine.SwitchState(po <= stateMachine.po, p1 <= stateMachine.p1, p2 <= stateMachine.p2)
 
+    doneTime = 0
+    for item in stateMachine.requests:
+        if item.state == "Done":
+            doneTime += item.time
+
     print(f"P000: {stateMachine.P000 / N}")
     print(f"P010: {stateMachine.P010 / N}")
     print(f"P001: {stateMachine.P001 / N}")
@@ -43,7 +48,7 @@ def main():
     print(f"Относительная пропускная способность (Q): {stateMachine.A / stateMachine.ga}")
     print(f"Абсолютная пропускная способность (A): {stateMachine.A / N}")
     print(f"Среднее время пребывания заявки в очереди (Woch): {stateMachine.Loch / stateMachine.en}")
-    print(f"Среднее время пребывания заявки в системе (Wc): {stateMachine.Lc / stateMachine.en}") 
+    print(f"Среднее время пребывания заявки в системе (Wc): {doneTime / stateMachine.A}") 
     print(f"Коэффициент загрузки канала (K1): {stateMachine.K1 / N}")
     print(f"Коэффициент загрузки канала (K2): {stateMachine.K2 / N}")
 

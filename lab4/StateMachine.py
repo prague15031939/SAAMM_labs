@@ -1,3 +1,9 @@
+class Request:
+    
+    def __init__(self):
+        self.time = 0
+        self.state = "None"
+
 class StateMachine:
 
     def __init__(self, startState, po, p1, p2):
@@ -28,7 +34,52 @@ class StateMachine:
         self.K1 = 0
         self.K2 = 0
 
+        self.machine = [None, None, None, None]
+        self.requests = []
+
+        self.shit = False
+
+    def __CalculateRequestsTime(self, po, p1, p2):
+        if (self.machine[3] != None) and (not p2):
+            self.machine[3].state = "Done"
+            self.machine[3] = None
+        
+        if (self.machine[2] != None) and (not p1):
+            if self.machine[3] != None:
+                self.machine[2].state = "Declined"
+            else:
+                self.machine[3] = self.machine[2]
+
+            self.machine[2] = None
+
+            if self.machine[1] != None:
+                self.machine[2] = self.machine[1]
+                self.machine[1] = None
+                if self.machine[0] != None:
+                    self.machine[1] = self.machine[0]
+                    self.machine[0] = None
+
+        if not po:
+            request = Request()
+            self.requests.append(request)
+            if self.machine[0] != None:
+                request.state = "Declined"
+            else:
+                if self.machine[1] != None:
+                    self.machine[0] = request
+                else:
+                    if self.machine[2] != None:
+                        self.machine[1] = request
+                    else:
+                        self.machine[2] = request
+                    
+        for request in self.machine:
+            if request != None:
+                request.time += 1
+
     def SwitchState(self, po, p1, p2):
+        self.__CalculateRequestsTime(po, p1, p2)
+
         if not po:
             self.ga += 1   
         if self.state[0] != "2" and not po:
