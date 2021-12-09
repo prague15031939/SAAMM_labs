@@ -37,8 +37,6 @@ class StateMachine:
         self.machine = [None, None, None, None]
         self.requests = []
 
-        self.shit = False
-
     def __CalculateRequestsTime(self, po, p1, p2):
         if (self.machine[3] != None) and (not p2):
             self.machine[3].state = "Done"
